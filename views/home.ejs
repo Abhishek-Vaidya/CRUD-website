@@ -1,0 +1,52 @@
+<%- include('templet/header') %> 
+
+<style>
+    button{
+      border: none;
+      background-color: white;
+      margin-right: 10px;
+    }
+    .but_img{
+      height: 30px;
+      width: 30px;
+    }
+</style>
+
+
+<div class="tablediv">
+  <% if (users != "") { %>
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Email ID</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((row , index) => { %>
+          <tr>
+            <td><%= index+1 %> </td>
+            <td></td>
+            <td><%= row.name %> </td>
+            <td><%= row.email %></td>
+            <td><%= row.phone %></td>
+            <td>
+              <a href="/delete/<%= row._id %> "><button><img class = "but_img" src="delete.jpg" alt="delete" ></button></a>
+              <a href="/edit/<%= row._id %> "><button><img class = "but_img" src="edit.png" alt="delete"></button></a>
+            </td>
+          </tr>          
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else {%>
+    <h1>No user found in database</h1>
+  <% } %>
+  
+</div>
+
+
+<%- include("templet/footer")  %> 
